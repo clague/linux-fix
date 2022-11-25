@@ -1,0 +1,25 @@
+From c7f6e79e6dede0ae5946001f2f7f222d7e5422ba Mon Sep 17 00:00:00 2001
+From: Arjan van de Ven <arjan.van.de.ven@intel.com>
+Date: Tue, 16 Nov 2021 22:20:49 +0000
+Subject: [PATCH 27/32] mm: wakeups: remove a wakeup
+
+---
+ mm/compaction.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/mm/compaction.c b/mm/compaction.c
+index 640fa7622..a78107eb4 100644
+--- a/mm/compaction.c
++++ b/mm/compaction.c
+@@ -29,7 +29,7 @@
+ /*
+  * Fragmentation score check interval for proactive compaction purposes.
+  */
+-#define HPAGE_FRAG_CHECK_INTERVAL_MSEC	(500)
++#define HPAGE_FRAG_CHECK_INTERVAL_MSEC	(5000)
+ 
+ static inline void count_compact_event(enum vm_event_item item)
+ {
+-- 
+2.38.1
+

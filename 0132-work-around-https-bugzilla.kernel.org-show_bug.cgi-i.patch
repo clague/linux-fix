@@ -1,0 +1,40 @@
+From 08e86221b4cc5ce1ab81c120393b1129c036f6e8 Mon Sep 17 00:00:00 2001
+From: clague <clague@clague.moe>
+Date: Fri, 25 Nov 2022 21:21:52 +0800
+Subject: [PATCH 32/32] work around
+ https://bugzilla.kernel.org/show_bug.cgi\?id\=215141
+
+---
+ arch/x86/kernel/cpu/resctrl/core.c | 16 ++++++++++++++++
+ 1 file changed, 16 insertions(+)
+
+diff --git a/arch/x86/kernel/cpu/resctrl/core.c b/arch/x86/kernel/cpu/resctrl/core.c
+index a5c51a14f..8a3201d7a 100644
+--- a/arch/x86/kernel/cpu/resctrl/core.c
++++ b/arch/x86/kernel/cpu/resctrl/core.c
+@@ -951,6 +951,22 @@ static int __init resctrl_late_init(void)
+ 	 */
+ 	rdt_init_res_defs();
+ 
++	if (boot_cpu_data.x86_vendor == X86_VENDOR_INTEL) {
++		if (boot_cpu_data.x86_model == INTEL_FAM6_ALDERLAKE)
++			return -ENODEV;
++		if (boot_cpu_data.x86_model == INTEL_FAM6_ALDERLAKE_L)
++			return -ENODEV;
++		if (boot_cpu_data.x86_model == INTEL_FAM6_ALDERLAKE_N)
++			return -ENODEV;
++		if (boot_cpu_data.x86_model == INTEL_FAM6_RAPTORLAKE)
++			return -ENODEV;
++		if (boot_cpu_data.x86_model == INTEL_FAM6_RAPTORLAKE_P)
++			return -ENODEV;
++		if (boot_cpu_data.x86_model == INTEL_FAM6_RAPTORLAKE_S)
++			return -ENODEV;
++	}
++
++
+ 	check_quirks();
+ 
+ 	if (!get_rdt_resources())
+-- 
+2.38.1
+

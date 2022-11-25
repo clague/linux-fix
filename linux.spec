@@ -5,7 +5,7 @@
 #
 
 Name:           linux
-Version:        6.0.9
+Version:        6.0.9n
 Release:        1214
 License:        GPL-2.0
 Summary:        The Linux kernel
@@ -15,7 +15,7 @@ Source0:        https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.0.9.tar.xz
 Source1:        config
 Source2:        cmdline
 
-%define ktarget  native
+%define ktarget  nmrih
 %define kversion %{version}-%{release}.%{ktarget}
 
 BuildRequires:  buildreq-kernel
@@ -42,47 +42,36 @@ Patch0103: 0103-silence-rapl.patch
 Patch0104: 0104-pci-pme-wakeups.patch
 Patch0105: 0105-ksm-wakeups.patch
 Patch0106: 0106-intel_idle-tweak-cpuidle-cstates.patch
-Patch0107: 0107-bootstats-add-printk-s-to-measure-boot-time-in-more-.patch
-Patch0108: 0108-smpboot-reuse-timer-calibration.patch
-Patch0109: 0109-initialize-ata-before-graphics.patch
-Patch0111: 0111-ipv4-tcp-allow-the-memory-tuning-for-tcp-to-go-a-lit.patch
-Patch0112: 0112-init-wait-for-partition-and-retry-scan.patch
-#Patch0113: 0113-print-fsync-count-for-bootchart.patch
-Patch0114: 0114-add-boot-option-to-allow-unsigned-modules.patch
-Patch0115: 0115-enable-stateless-firmware-loading.patch
-Patch0116: 0116-migrate-some-systemd-defaults-to-the-kernel-defaults.patch
-Patch0117: 0117-xattr-allow-setting-user.-attributes-on-symlinks-by-.patch
-Patch0118: 0118-add-scheduler-turbo3-patch.patch
-Patch0119: 0119-use-lfence-instead-of-rep-and-nop.patch
-Patch0120: 0120-do-accept-in-LIFO-order-for-cache-efficiency.patch
-Patch0121: 0121-locking-rwsem-spin-faster.patch
-Patch0122: 0122-ata-libahci-ignore-staggered-spin-up.patch
-Patch0123: 0123-print-CPU-that-faults.patch
-Patch0124: 0124-x86-microcode-Add-an-option-to-reload-microcode-even.patch
-Patch0125: 0125-nvme-workaround.patch
-Patch0126: 0126-don-t-report-an-error-if-PowerClamp-run-on-other-CPU.patch
-Patch0127: 0127-lib-raid6-add-patch.patch
-Patch0128: 0128-itmt_epb-use-epb-to-scale-itmt.patch
-Patch0130: 0130-itmt2-ADL-fixes.patch
-Patch0131: 0131-add-a-per-cpu-minimum-high-watermark-an-tune-batch-s.patch
-Patch0132: 0132-prezero-20220308.patch
-Patch0133: 0133-novector.patch
-Patch0134: scale.patch
-Patch0135: libsgrowdown.patch
-Patch0136: kdf-boottime.patch
-Patch0137: adlrdt.patch
+Patch0107: 0107-smpboot-reuse-timer-calibration.patch
+Patch0108: 0108-initialize-ata-before-graphics.patch
+Patch0109: 0109-ipv4-tcp-allow-the-memory-tuning-for-tcp-to-go-a-lit.patch
+Patch0110: 0110-init-wait-for-partition-and-retry-scan.patch
+Patch0111: 0111-print-fsync-count-for-bootchart.patch
+Patch0112: 0112-add-boot-option-to-allow-unsigned-modules.patch
+Patch0113: 0113-enable-stateless-firmware-loading.patch
+Patch0114: 0114-migrate-some-systemd-defaults-to-the-kernel-defaults.patch
+Patch0115: 0115-xattr-allow-setting-user.-attributes-on-symlinks-by-.patch
+Patch0116: 0116-add-scheduler-turbo3-patch.patch
+Patch0117: 0117-use-lfence-instead-of-rep-and-nop.patch
+Patch0118: 0118-do-accept-in-LIFO-order-for-cache-efficiency.patch
+Patch0119: 0119-locking-rwsem-spin-faster.patch
+Patch0120: 0120-ata-libahci-ignore-staggered-spin-up.patch
+Patch0121: 0121-print-CPU-that-faults.patch
+Patch0122: 0122-x86-microcode-Add-an-option-to-reload-microcode-even.patch
+Patch0123: 0123-nvme-workaround.patch
+Patch0124: 0124-don-t-report-an-error-if-PowerClamp-run-on-other-CPU.patch
+Patch0125: 0125-lib-raid6-add-patch.patch
+Patch0126: 0126-itmt_epb-use-epb-to-scale-itmt.patch
+Patch0127: 0127-mm-wakeups-remove-a-wakeup.patch
+Patch0128: 0128-itmt2-ADL-fixes.patch
+Patch0129: 0129-add-a-per-cpu-minimum-high-watermark-an-tune-batch-s.patch
+Patch0130: 0130-prezero-20220308.patch
+Patch0131: 0131-novector.patch
+Patch0132: 0132-work-around-https-bugzilla.kernel.org-show_bug.cgi-i.patch
 #Serie.end
 
 #backports
 #Patch0200: mm-lru_cache_disable-use-synchronize_rcu_expedited.patch
-
-Patch0401: sched-hybrid1.patch
-Patch0402: sched-hybrid2.patch
-Patch0403: sched-hybrid3.patch
-Patch0404: sched-hybrid4.patch
-
-Patch0501: scaling-1.patch
-Patch0502: scaling-2.patch
 
 %description
 The Linux kernel.

@@ -1,7 +1,7 @@
-From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From d7d14f8e88423c7818141e7217ec3efb268bedc1 Mon Sep 17 00:00:00 2001
 From: Arjan van de Ven <arjan@linux.intel.com>
 Date: Sat, 19 Mar 2016 21:32:19 -0400
-Subject: [PATCH] intel_idle: tweak cpuidle cstates
+Subject: [PATCH 06/32] intel_idle: tweak cpuidle cstates
 
 Increase target_residency in cpuidle cstate
 
@@ -10,14 +10,14 @@ Clear linux is cleaner in hygiene (wakupes) than the average linux,
 so we can afford changing these in a way that increases
 performance while keeping power efficiency
 ---
- drivers/idle/intel_idle.c | 44 +++++++++++++++++++--------------------
- 1 file changed, 22 insertions(+), 22 deletions(-)
+ drivers/idle/intel_idle.c | 48 +++++++++++++++++++--------------------
+ 1 file changed, 24 insertions(+), 24 deletions(-)
 
 diff --git a/drivers/idle/intel_idle.c b/drivers/idle/intel_idle.c
-index 0b66e25c0e2d..406b41b387d5 100644
+index 3e1017196..a727428ee 100644
 --- a/drivers/idle/intel_idle.c
 +++ b/drivers/idle/intel_idle.c
-@@ -511,7 +511,7 @@ static struct cpuidle_state hsw_cstates[] __initdata = {
+@@ -578,7 +578,7 @@ static struct cpuidle_state hsw_cstates[] __initdata = {
  		.desc = "MWAIT 0x01",
  		.flags = MWAIT2flg(0x01) | CPUIDLE_FLAG_ALWAYS_ENABLE,
  		.exit_latency = 10,
@@ -26,7 +26,7 @@ index 0b66e25c0e2d..406b41b387d5 100644
  		.enter = &intel_idle,
  		.enter_s2idle = intel_idle_s2idle, },
  	{
-@@ -519,7 +519,7 @@ static struct cpuidle_state hsw_cstates[] __initdata = {
+@@ -586,7 +586,7 @@ static struct cpuidle_state hsw_cstates[] __initdata = {
  		.desc = "MWAIT 0x10",
  		.flags = MWAIT2flg(0x10) | CPUIDLE_FLAG_TLB_FLUSHED,
  		.exit_latency = 33,
@@ -35,7 +35,7 @@ index 0b66e25c0e2d..406b41b387d5 100644
  		.enter = &intel_idle,
  		.enter_s2idle = intel_idle_s2idle, },
  	{
-@@ -527,7 +527,7 @@ static struct cpuidle_state hsw_cstates[] __initdata = {
+@@ -594,7 +594,7 @@ static struct cpuidle_state hsw_cstates[] __initdata = {
  		.desc = "MWAIT 0x20",
  		.flags = MWAIT2flg(0x20) | CPUIDLE_FLAG_TLB_FLUSHED,
  		.exit_latency = 133,
@@ -44,7 +44,7 @@ index 0b66e25c0e2d..406b41b387d5 100644
  		.enter = &intel_idle,
  		.enter_s2idle = intel_idle_s2idle, },
  	{
-@@ -535,7 +535,7 @@ static struct cpuidle_state hsw_cstates[] __initdata = {
+@@ -602,7 +602,7 @@ static struct cpuidle_state hsw_cstates[] __initdata = {
  		.desc = "MWAIT 0x32",
  		.flags = MWAIT2flg(0x32) | CPUIDLE_FLAG_TLB_FLUSHED,
  		.exit_latency = 166,
@@ -53,7 +53,7 @@ index 0b66e25c0e2d..406b41b387d5 100644
  		.enter = &intel_idle,
  		.enter_s2idle = intel_idle_s2idle, },
  	{
-@@ -543,7 +543,7 @@ static struct cpuidle_state hsw_cstates[] __initdata = {
+@@ -610,7 +610,7 @@ static struct cpuidle_state hsw_cstates[] __initdata = {
  		.desc = "MWAIT 0x40",
  		.flags = MWAIT2flg(0x40) | CPUIDLE_FLAG_TLB_FLUSHED,
  		.exit_latency = 300,
@@ -62,7 +62,7 @@ index 0b66e25c0e2d..406b41b387d5 100644
  		.enter = &intel_idle,
  		.enter_s2idle = intel_idle_s2idle, },
  	{
-@@ -551,7 +551,7 @@ static struct cpuidle_state hsw_cstates[] __initdata = {
+@@ -618,7 +618,7 @@ static struct cpuidle_state hsw_cstates[] __initdata = {
  		.desc = "MWAIT 0x50",
  		.flags = MWAIT2flg(0x50) | CPUIDLE_FLAG_TLB_FLUSHED,
  		.exit_latency = 600,
@@ -71,7 +71,7 @@ index 0b66e25c0e2d..406b41b387d5 100644
  		.enter = &intel_idle,
  		.enter_s2idle = intel_idle_s2idle, },
  	{
-@@ -559,7 +559,7 @@ static struct cpuidle_state hsw_cstates[] __initdata = {
+@@ -626,7 +626,7 @@ static struct cpuidle_state hsw_cstates[] __initdata = {
  		.desc = "MWAIT 0x60",
  		.flags = MWAIT2flg(0x60) | CPUIDLE_FLAG_TLB_FLUSHED,
  		.exit_latency = 2600,
@@ -80,7 +80,7 @@ index 0b66e25c0e2d..406b41b387d5 100644
  		.enter = &intel_idle,
  		.enter_s2idle = intel_idle_s2idle, },
  	{
-@@ -579,7 +579,7 @@ static struct cpuidle_state bdw_cstates[] __initdata = {
+@@ -646,7 +646,7 @@ static struct cpuidle_state bdw_cstates[] __initdata = {
  		.desc = "MWAIT 0x01",
  		.flags = MWAIT2flg(0x01) | CPUIDLE_FLAG_ALWAYS_ENABLE,
  		.exit_latency = 10,
@@ -89,7 +89,7 @@ index 0b66e25c0e2d..406b41b387d5 100644
  		.enter = &intel_idle,
  		.enter_s2idle = intel_idle_s2idle, },
  	{
-@@ -587,7 +587,7 @@ static struct cpuidle_state bdw_cstates[] __initdata = {
+@@ -654,7 +654,7 @@ static struct cpuidle_state bdw_cstates[] __initdata = {
  		.desc = "MWAIT 0x10",
  		.flags = MWAIT2flg(0x10) | CPUIDLE_FLAG_TLB_FLUSHED,
  		.exit_latency = 40,
@@ -98,7 +98,7 @@ index 0b66e25c0e2d..406b41b387d5 100644
  		.enter = &intel_idle,
  		.enter_s2idle = intel_idle_s2idle, },
  	{
-@@ -595,7 +595,7 @@ static struct cpuidle_state bdw_cstates[] __initdata = {
+@@ -662,7 +662,7 @@ static struct cpuidle_state bdw_cstates[] __initdata = {
  		.desc = "MWAIT 0x20",
  		.flags = MWAIT2flg(0x20) | CPUIDLE_FLAG_TLB_FLUSHED,
  		.exit_latency = 133,
@@ -107,7 +107,7 @@ index 0b66e25c0e2d..406b41b387d5 100644
  		.enter = &intel_idle,
  		.enter_s2idle = intel_idle_s2idle, },
  	{
-@@ -603,7 +603,7 @@ static struct cpuidle_state bdw_cstates[] __initdata = {
+@@ -670,7 +670,7 @@ static struct cpuidle_state bdw_cstates[] __initdata = {
  		.desc = "MWAIT 0x32",
  		.flags = MWAIT2flg(0x32) | CPUIDLE_FLAG_TLB_FLUSHED,
  		.exit_latency = 166,
@@ -116,7 +116,7 @@ index 0b66e25c0e2d..406b41b387d5 100644
  		.enter = &intel_idle,
  		.enter_s2idle = intel_idle_s2idle, },
  	{
-@@ -611,7 +611,7 @@ static struct cpuidle_state bdw_cstates[] __initdata = {
+@@ -678,7 +678,7 @@ static struct cpuidle_state bdw_cstates[] __initdata = {
  		.desc = "MWAIT 0x40",
  		.flags = MWAIT2flg(0x40) | CPUIDLE_FLAG_TLB_FLUSHED,
  		.exit_latency = 300,
@@ -125,7 +125,7 @@ index 0b66e25c0e2d..406b41b387d5 100644
  		.enter = &intel_idle,
  		.enter_s2idle = intel_idle_s2idle, },
  	{
-@@ -619,7 +619,7 @@ static struct cpuidle_state bdw_cstates[] __initdata = {
+@@ -686,7 +686,7 @@ static struct cpuidle_state bdw_cstates[] __initdata = {
  		.desc = "MWAIT 0x50",
  		.flags = MWAIT2flg(0x50) | CPUIDLE_FLAG_TLB_FLUSHED,
  		.exit_latency = 600,
@@ -134,7 +134,7 @@ index 0b66e25c0e2d..406b41b387d5 100644
  		.enter = &intel_idle,
  		.enter_s2idle = intel_idle_s2idle, },
  	{
-@@ -627,7 +627,7 @@ static struct cpuidle_state bdw_cstates[] __initdata = {
+@@ -694,7 +694,7 @@ static struct cpuidle_state bdw_cstates[] __initdata = {
  		.desc = "MWAIT 0x60",
  		.flags = MWAIT2flg(0x60) | CPUIDLE_FLAG_TLB_FLUSHED,
  		.exit_latency = 2600,
@@ -143,7 +143,7 @@ index 0b66e25c0e2d..406b41b387d5 100644
  		.enter = &intel_idle,
  		.enter_s2idle = intel_idle_s2idle, },
  	{
-@@ -648,7 +648,7 @@ static struct cpuidle_state skl_cstates[] __initdata = {
+@@ -715,7 +715,7 @@ static struct cpuidle_state skl_cstates[] __initdata = {
  		.desc = "MWAIT 0x01",
  		.flags = MWAIT2flg(0x01) | CPUIDLE_FLAG_ALWAYS_ENABLE,
  		.exit_latency = 10,
@@ -152,7 +152,7 @@ index 0b66e25c0e2d..406b41b387d5 100644
  		.enter = &intel_idle,
  		.enter_s2idle = intel_idle_s2idle, },
  	{
-@@ -656,7 +656,7 @@ static struct cpuidle_state skl_cstates[] __initdata = {
+@@ -723,7 +723,7 @@ static struct cpuidle_state skl_cstates[] __initdata = {
  		.desc = "MWAIT 0x10",
  		.flags = MWAIT2flg(0x10) | CPUIDLE_FLAG_TLB_FLUSHED,
  		.exit_latency = 70,
@@ -161,52 +161,52 @@ index 0b66e25c0e2d..406b41b387d5 100644
  		.enter = &intel_idle,
  		.enter_s2idle = intel_idle_s2idle, },
  	{
-@@ -664,7 +664,7 @@ static struct cpuidle_state skl_cstates[] __initdata = {
+@@ -731,7 +731,7 @@ static struct cpuidle_state skl_cstates[] __initdata = {
  		.desc = "MWAIT 0x20",
- 		.flags = MWAIT2flg(0x20) | CPUIDLE_FLAG_TLB_FLUSHED,
+ 		.flags = MWAIT2flg(0x20) | CPUIDLE_FLAG_TLB_FLUSHED | CPUIDLE_FLAG_IBRS,
  		.exit_latency = 85,
 -		.target_residency = 200,
 +		.target_residency = 600,
  		.enter = &intel_idle,
  		.enter_s2idle = intel_idle_s2idle, },
  	{
-@@ -672,7 +672,7 @@ static struct cpuidle_state skl_cstates[] __initdata = {
+@@ -739,7 +739,7 @@ static struct cpuidle_state skl_cstates[] __initdata = {
  		.desc = "MWAIT 0x33",
- 		.flags = MWAIT2flg(0x33) | CPUIDLE_FLAG_TLB_FLUSHED,
+ 		.flags = MWAIT2flg(0x33) | CPUIDLE_FLAG_TLB_FLUSHED | CPUIDLE_FLAG_IBRS,
  		.exit_latency = 124,
 -		.target_residency = 800,
 +		.target_residency = 3000,
  		.enter = &intel_idle,
  		.enter_s2idle = intel_idle_s2idle, },
  	{
-@@ -680,7 +680,7 @@ static struct cpuidle_state skl_cstates[] __initdata = {
+@@ -747,7 +747,7 @@ static struct cpuidle_state skl_cstates[] __initdata = {
  		.desc = "MWAIT 0x40",
- 		.flags = MWAIT2flg(0x40) | CPUIDLE_FLAG_TLB_FLUSHED,
+ 		.flags = MWAIT2flg(0x40) | CPUIDLE_FLAG_TLB_FLUSHED | CPUIDLE_FLAG_IBRS,
  		.exit_latency = 200,
 -		.target_residency = 800,
 +		.target_residency = 3200,
  		.enter = &intel_idle,
  		.enter_s2idle = intel_idle_s2idle, },
  	{
-@@ -688,7 +688,7 @@ static struct cpuidle_state skl_cstates[] __initdata = {
+@@ -755,7 +755,7 @@ static struct cpuidle_state skl_cstates[] __initdata = {
  		.desc = "MWAIT 0x50",
- 		.flags = MWAIT2flg(0x50) | CPUIDLE_FLAG_TLB_FLUSHED,
+ 		.flags = MWAIT2flg(0x50) | CPUIDLE_FLAG_TLB_FLUSHED | CPUIDLE_FLAG_IBRS,
  		.exit_latency = 480,
 -		.target_residency = 5000,
 +		.target_residency = 9000,
  		.enter = &intel_idle,
  		.enter_s2idle = intel_idle_s2idle, },
  	{
-@@ -696,7 +696,7 @@ static struct cpuidle_state skl_cstates[] __initdata = {
+@@ -763,7 +763,7 @@ static struct cpuidle_state skl_cstates[] __initdata = {
  		.desc = "MWAIT 0x60",
- 		.flags = MWAIT2flg(0x60) | CPUIDLE_FLAG_TLB_FLUSHED,
+ 		.flags = MWAIT2flg(0x60) | CPUIDLE_FLAG_TLB_FLUSHED | CPUIDLE_FLAG_IBRS,
  		.exit_latency = 890,
 -		.target_residency = 5000,
 +		.target_residency = 9000,
  		.enter = &intel_idle,
  		.enter_s2idle = intel_idle_s2idle, },
  	{
-@@ -717,7 +717,7 @@ static struct cpuidle_state skx_cstates[] __initdata = {
+@@ -784,7 +784,7 @@ static struct cpuidle_state skx_cstates[] __initdata = {
  		.desc = "MWAIT 0x01",
  		.flags = MWAIT2flg(0x01) | CPUIDLE_FLAG_ALWAYS_ENABLE,
  		.exit_latency = 10,
@@ -215,12 +215,7 @@ index 0b66e25c0e2d..406b41b387d5 100644
  		.enter = &intel_idle,
  		.enter_s2idle = intel_idle_s2idle, },
  	{
--- 
-https://clearlinux.org
-
---- linux-5.19.1/drivers/idle/intel_idle.c~	2022-08-11 11:22:05.000000000 +0000
-+++ linux-5.19.1/drivers/idle/intel_idle.c	2022-08-31 23:22:41.705413496 +0000
-@@ -796,7 +796,7 @@
+@@ -813,7 +813,7 @@ static struct cpuidle_state icx_cstates[] __initdata = {
  		.desc = "MWAIT 0x01",
  		.flags = MWAIT2flg(0x01) | CPUIDLE_FLAG_ALWAYS_ENABLE,
  		.exit_latency = 4,
@@ -229,7 +224,7 @@ https://clearlinux.org
  		.enter = &intel_idle,
  		.enter_s2idle = intel_idle_s2idle, },
  	{
-@@ -804,7 +804,7 @@
+@@ -821,7 +821,7 @@ static struct cpuidle_state icx_cstates[] __initdata = {
  		.desc = "MWAIT 0x20",
  		.flags = MWAIT2flg(0x20) | CPUIDLE_FLAG_TLB_FLUSHED,
  		.exit_latency = 170,
@@ -238,12 +233,6 @@ https://clearlinux.org
  		.enter = &intel_idle,
  		.enter_s2idle = intel_idle_s2idle, },
  	{
-@@ -936,7 +936,7 @@
- 		.flags = MWAIT2flg(0x01) | CPUIDLE_FLAG_ALWAYS_ENABLE |
- 					   CPUIDLE_FLAG_UNUSABLE,
- 		.exit_latency = 2,
--		.target_residency = 4,
-+		.target_residency = 40,
- 		.enter = &intel_idle,
- 		.enter_s2idle = intel_idle_s2idle, },
- 	{
+-- 
+2.38.1
+
