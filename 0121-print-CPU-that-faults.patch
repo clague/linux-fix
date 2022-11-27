@@ -1,4 +1,4 @@
-From 28f1c604aa144dc74e7551039b5d6ae3ae132efd Mon Sep 17 00:00:00 2001
+From 24d94171fe607d73426cc3b3c9d0aeee9cae327d Mon Sep 17 00:00:00 2001
 From: Arjan van de Ven <arjan@linux.intel.com>
 Date: Sat, 10 Aug 2019 03:19:04 +0000
 Subject: [PATCH 21/32] print CPU that faults

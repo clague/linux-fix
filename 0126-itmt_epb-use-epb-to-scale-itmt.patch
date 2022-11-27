@@ -1,16 +1,16 @@
-From 8e4902bc5239114c38e34da1773a49a546fad24c Mon Sep 17 00:00:00 2001
+From 4d788b772bd9be30e03cd6a608eaea08820087f4 Mon Sep 17 00:00:00 2001
 From: Arjan van de Ven <arjan.van.de.ven@intel.com>
 Date: Tue, 16 Nov 2021 17:39:25 +0000
 Subject: [PATCH 26/32] itmt_epb: use epb to scale itmt
 
 ---
- arch/x86/include/asm/topology.h |  1 +
+ arch/x86/include/asm/topology.h |  4 ++++
  arch/x86/kernel/cpu/intel_epb.c |  4 ++++
  arch/x86/kernel/itmt.c          | 29 ++++++++++++++++++++++++++++-
- 3 files changed, 33 insertions(+), 1 deletion(-)
+ 3 files changed, 36 insertions(+), 1 deletion(-)
 
 diff --git a/arch/x86/include/asm/topology.h b/arch/x86/include/asm/topology.h
-index 458c891a8..d86eb1ebf 100644
+index 458c891a8..29c3ec0b7 100644
 --- a/arch/x86/include/asm/topology.h
 +++ b/arch/x86/include/asm/topology.h
 @@ -175,6 +175,7 @@ extern unsigned int __read_mostly sysctl_sched_itmt_enabled;
@@ -21,6 +21,16 @@ index 458c891a8..d86eb1ebf 100644
  
  /* Interface to notify scheduler that system supports ITMT */
  int sched_set_itmt_support(void);
+@@ -188,6 +189,9 @@ void sched_clear_itmt_support(void);
+ static inline void sched_set_itmt_core_prio(int prio, int core_cpu)
+ {
+ }
++static inline void sched_set_itmt_power_ratio(int power_ratio, int core_cpu)
++{
++}
+ static inline int sched_set_itmt_support(void)
+ {
+ 	return 0;
 diff --git a/arch/x86/kernel/cpu/intel_epb.c b/arch/x86/kernel/cpu/intel_epb.c
 index fbaf12e43..c8c2d6f1a 100644
 --- a/arch/x86/kernel/cpu/intel_epb.c

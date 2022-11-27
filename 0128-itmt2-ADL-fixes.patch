@@ -1,4 +1,4 @@
-From ded983feaeb1cd589be57c8d13678f4e844374f0 Mon Sep 17 00:00:00 2001
+From 01573a14d80c4bcbb79ef2018914153a859915e9 Mon Sep 17 00:00:00 2001
 From: Srinivas Pandruvada <srinivas.pandruvada@linux.intel.com>
 Date: Thu, 18 Nov 2021 16:09:47 +0000
 Subject: [PATCH 28/32] itmt2 ADL fixes

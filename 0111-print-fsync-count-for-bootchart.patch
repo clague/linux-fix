@@ -1,4 +1,4 @@
-From 167d869b23273fb4cbf856ec42cdacbb2b9ed21a Mon Sep 17 00:00:00 2001
+From 2bc1855f38d3d1fa6a66c1bc7e0aa0214fef113c Mon Sep 17 00:00:00 2001
 From: Arjan van de Ven <arjan@linux.intel.com>
 Date: Tue, 20 Jun 2017 20:19:08 +0000
 Subject: [PATCH 11/32] print fsync count for bootchart
@@ -36,17 +36,17 @@ index 8d82d6d32..ebbe7cb0b 100644
  	/*
  	 * executable name, excluding path.
 diff --git a/kernel/sched/debug.c b/kernel/sched/debug.c
-index 667876da8..0813b7d73 100644
+index 667876da8..13fbcd19b 100644
 --- a/kernel/sched/debug.c
 +++ b/kernel/sched/debug.c
-@@ -460,6 +460,7 @@ static void print_cfs_group_stats(struct seq_file *m, int cpu, struct task_group
- 	PN(se->exec_start);
- 	PN(se->vruntime);
- 	PN(se->sum_exec_runtime);
+@@ -959,6 +959,7 @@ void proc_sched_show_task(struct task_struct *p, struct pid_namespace *ns,
+ 	PN(se.exec_start);
+ 	PN(se.vruntime);
+ 	PN(se.sum_exec_runtime);
 +	P(fsync_count);
  
- 	if (schedstat_enabled()) {
- 		struct sched_statistics *stats;
+ 	nr_switches = p->nvcsw + p->nivcsw;
+ 
 -- 
 2.38.1
 

@@ -1,4 +1,4 @@
-From f00492a3912ed36f7da10cec6707596b1cff5837 Mon Sep 17 00:00:00 2001
+From 86f8ecb2e4b416754d598eb4025b8857132f15f6 Mon Sep 17 00:00:00 2001
 From: "Brett T. Warden" <brett.t.warden@intel.com>
 Date: Mon, 13 Aug 2018 04:01:21 -0500
 Subject: [PATCH 12/32] add boot option to allow unsigned modules

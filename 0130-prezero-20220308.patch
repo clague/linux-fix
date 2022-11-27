@@ -1,4 +1,4 @@
-From 34357879ace7308fe72b02595905a86c218f2e61 Mon Sep 17 00:00:00 2001
+From e3ce3cfa7eb225530c543363fa5ab46acd929775 Mon Sep 17 00:00:00 2001
 From: Dave Hansen <dave.hansen@intel.com>
 Date: Mon, 7 Mar 2022 11:59:20 -0800
 Subject: [PATCH 30/32] prezero 20220308
@@ -9,9 +9,9 @@ Subject: [PATCH 30/32] prezero 20220308
  kernel/sysctl.c            |   9 +
  mm/compaction.c            |  52 +++++
  mm/huge_memory.c           |   7 +-
- mm/internal.h              |  23 +-
+ mm/internal.h              |  28 ++-
  mm/page_alloc.c            | 423 +++++++++++++++++++++++++++++++++----
- 7 files changed, 472 insertions(+), 46 deletions(-)
+ 7 files changed, 477 insertions(+), 46 deletions(-)
 
 diff --git a/include/linux/compaction.h b/include/linux/compaction.h
 index 52a9ff65f..f56f6a168 100644
@@ -155,10 +155,22 @@ index 9558dbf39..5ef4c8bb2 100644
  	 * The memory barrier inside __SetPageUptodate makes sure that
  	 * clear_huge_page writes become visible before the set_pmd_at()
 diff --git a/mm/internal.h b/mm/internal.h
-index 785409805..4e1837caf 100644
+index 785409805..160d45576 100644
 --- a/mm/internal.h
 +++ b/mm/internal.h
-@@ -237,7 +237,7 @@ struct alloc_context {
+@@ -226,6 +226,11 @@ struct alloc_context {
+ 	bool spread_dirty_pages;
+ };
+ 
++/*
++ * in line 463
++ */
++static inline unsigned int __buddy_order(struct page *page, bool unsafe);
++
+ /*
+  * This function returns the order of a free page in the buddy system. In
+  * general, page_zone(page)->lock must be held by the caller to prevent the
+@@ -237,7 +242,7 @@ struct alloc_context {
  static inline unsigned int buddy_order(struct page *page)
  {
  	/* PageBuddy() must be checked by the caller */
@@ -167,7 +179,7 @@ index 785409805..4e1837caf 100644
  }
  
  /*
-@@ -251,7 +251,10 @@ static inline unsigned int buddy_order(struct page *page)
+@@ -251,7 +256,10 @@ static inline unsigned int buddy_order(struct page *page)
   * times, potentially observing different values in the tests and the actual
   * use of the result.
   */
@@ -179,7 +191,7 @@ index 785409805..4e1837caf 100644
  
  /*
   * This function checks whether a page is free && is the buddy
-@@ -447,6 +450,22 @@ int __alloc_contig_migrate_range(struct compact_control *cc,
+@@ -447,6 +455,22 @@ int __alloc_contig_migrate_range(struct compact_control *cc,
  int find_suitable_fallback(struct free_area *area, unsigned int order,
  			int migratetype, bool only_stealable, bool *can_steal);
  

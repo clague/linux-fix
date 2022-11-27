@@ -1,4 +1,4 @@
-From 53641bf4fce3e59396560a9eab42ccbdabdfe21d Mon Sep 17 00:00:00 2001
+From c0962768a50f23d35064d442dae26758850e5c7a Mon Sep 17 00:00:00 2001
 From: Auke Kok <auke-jan.h.kok@intel.com>
 Date: Thu, 2 Aug 2018 12:03:22 -0700
 Subject: [PATCH 14/32] migrate some systemd defaults to the kernel defaults.

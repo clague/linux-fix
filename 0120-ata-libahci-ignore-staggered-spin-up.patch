@@ -1,4 +1,4 @@
-From 4aa52e204385d3da5185fce79e0637f0da87cbf7 Mon Sep 17 00:00:00 2001
+From c1f76858b89a230d080b60f27c70c9af5cb2ec74 Mon Sep 17 00:00:00 2001
 From: Joe Konno <joe.konno@intel.com>
 Date: Tue, 25 Jun 2019 10:35:54 -0700
 Subject: [PATCH 20/32] ata: libahci: ignore staggered spin-up
